@@ -2,7 +2,7 @@ const express = require("express")
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-//const bodyParser = require("body-parser");
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -10,10 +10,10 @@ app.use(express.urlencoded({extended:true}));
 
 
 const db = mysql.createConnection({
-    host:'localhost',
-    user: 'root',
-    password: '',
-    database: 'beethoven',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env-DB_PASSWORD,
+    //database: 'beethoven',
 })
 
 db.connect((err)=>{
