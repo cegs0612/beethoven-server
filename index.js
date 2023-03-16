@@ -34,6 +34,5 @@ app.post("/api/download",(req,res)=>{
     res.download(url);
 })
 
-const PORT = 3001;
 
-app.listen(PORT, ()=>{console.log(' server running on port '+PORT)});
+app.listen(process.env.PORT, ()=>{console.log('server running')});
