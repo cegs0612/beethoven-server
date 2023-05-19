@@ -3,6 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 require("dotenv").config();
+let dbConnected = false;
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +20,11 @@ const db = mysql.createConnection({
 db.connect((err)=>{
     if (err) throw err;
     console.log("DB conected");
+    dbConnected=true;
+})
+
+app.get("/",(req,res)=>{
+    dbConnected&&res.send("Server running");
 })
 
 app.get("/api/get",(req,res)=>{
